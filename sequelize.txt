@@ -1,0 +1,11 @@
+npm install --save sequelize
+npm install -g sequelize-cli
+npm install --save mysql2
+sequelize init
+sequelize model:create --name authors --attributes name:string,lastname:string,age:integer
+
+sequelize model:create --name productos --attributes "id_producto:integer nombre:string precio:decimal id_categoria:integer" --force
+
+sequelize model:create --name usuarios --attributes "id_usuario:integer nombre:string email:string"
+
+sequelize model:create --name categorias --attributes "id_categoria:integer nombre:string"
