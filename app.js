@@ -7,8 +7,8 @@ const app = express();
 // const Usuarios = require("./models").usuarios;
 const PORT = 3000;
 
-app.set("view engine", "ejs"); //motor de plantillas ejs
-app.use(express.static("public")); //carpeta publica para archivos estaticos (css, js, img, etc)
+// app.set("view engine", "ejs"); //motor de plantillas ejs
+// app.use(express.static("public")); //carpeta publica para archivos estaticos (css, js, img, etc)
 app.use(express.urlencoded({ extended: true })); //para poder leer los datos de un formulario
 app.use(express.json()); //para poder leer los datos de un formulario
 app.use(cookieParser()); //Configurar cookie-parser
@@ -34,26 +34,26 @@ app.use("/", require("./routes/routes")); //contiene la vista index, login, regi
 // // rutas de api para usuarios, para la lógica CRUD en usuarios. (GET, POST, PUT, DELETE)
 // app.use("/api/usuarios",require("./routes/usuariosRoutes"));
 
-// // Ejemplo de función asincrónica con async/await
-// function delay(ms) {
-//   // Simula una operación asincrónica, muestra un mensaje por consola
-//   return new Promise((resolve, reject) =>
-//     setTimeout(() => {
-//       console.log("Operación asincrónica completada.");
-//       resolve();
-//     }, [ms])
-//   );
-// }
+// Ejemplo de función asincrónica con async/await
+function delay(ms) {
+  // Simula una operación asincrónica, muestra un mensaje por consola
+  return new Promise((resolve, reject) =>
+    setTimeout(() => {
+      console.log("Operación asincrónica completada.");
+      resolve();
+    }, [ms])
+  );
+}
 
-// app.use("/test", async (req, res) => {
-//   try {
-//     const result = await delay(5000);
-//     res.send({ msg: "Mensaje post promise", result });
-//   } catch (error) {
-//     console.log(error);
-//     res.send("Ocurrio un error");
-//   }
-// });
+app.use("/test", async (req, res) => {
+  try {
+    const result = await delay(5000);
+    res.send({ msg: "Mensaje post promise", result });
+  } catch (error) {
+    console.log(error);
+    res.send("Ocurrio un error");
+  }
+});
 
 //Server setup
 app.listen(PORT, () => {

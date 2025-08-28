@@ -1,11 +1,14 @@
 const { body, validationResult } = require("express-validator");
 const validateAddedProducts = [
-  body("nombre").notEmpty().withMessage("Debes ingresar el nombre"),
-  body("precio")
+  body("Nombre").notEmpty().withMessage("Debes ingresar el nombre"),
+  body("Descripcion").notEmpty().withMessage("Debes ingresar la descripcion"),
+  body("Price")
     .notEmpty()
     .withMessage("Debes ingresar el precio")
     .isNumeric()
     .withMessage("Debes ingresar solo números"),
+  body("Categoria").notEmpty().withMessage("Debes ingresar la categoria"),
+  body("Url").notEmpty().withMessage("Debes ingresar la url"),
   (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -15,12 +18,15 @@ const validateAddedProducts = [
   },
 ];
 const validateUpdatedProducts = [
-  body("nombre").notEmpty().withMessage("Debes ingresar el nombre"),
-  body("precio")
+  body("Nombre").notEmpty().withMessage("Debes ingresar el nombre"),
+  body("Descripcion").notEmpty().withMessage("Debes ingresar la descripcion"),
+  body("Price")
     .notEmpty()
     .withMessage("Debes ingresar el precio")
     .isNumeric()
     .withMessage("Debes ingresar solo números"),
+  body("Categoria").notEmpty().withMessage("Debes ingresar la categoria"),
+  body("Url").notEmpty().withMessage("Debes ingresar la url"),
   (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {

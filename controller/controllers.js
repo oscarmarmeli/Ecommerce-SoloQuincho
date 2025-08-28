@@ -2,9 +2,9 @@ const Product = require("../models/index").productos;
 
 const addProducts = async (req, res) => {
     const { ...newProduct } = req.body;
-    const { nombre, precio } = newProduct;
+    const { Nombre, Descripcion, Price, Categoria, Url } = newProduct;
     console.log(newProduct);
-    if (!nombre || !precio) {
+    if (!Nombre || !Descripcion || !Price || !Categoria || !Url) {
       return res
         .status(500)
         .json({ message: "Debes ingresar un producto" });
